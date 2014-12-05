@@ -1,0 +1,252 @@
+
+/* ---------- Basic override system settings ---------- */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  line-height: 1.4em;
+  font-size: 87.5%;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.element-hidden,
+.element-invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 0 1em;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+img {
+  outline: 0;
+}
+
+/* ---------- Unordered and Ordered Lists ---------- */
+
+ul,
+ol,
+li {
+  margin: 0 0 1em;
+}
+
+ul,
+ol {
+  display: block;
+}
+
+ul.inline, ul.links.inline {
+  display: inline;
+  padding-left: 0;
+}
+
+ul.inline li {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* ---------- Form Elements ---------- */
+
+input,
+textarea,
+select,
+a.button {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+}
+
+/* ---------- Primary Tabs  ---------- */
+
+.tabs-wrapper-inner {
+  padding: 10px 15px 12px;
+  background-color: #e0e0d8;
+}
+
+#tabs ul.tabs.primary {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  font: 0.85em/1.5em "Lucida Grande","Lucida Sans Unicode",sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#tabs ul.tabs.primary li {
+  padding: 8px 0px 5px;
+  margin: 3px 3px 3px 0px;
+  display: inline-block;
+}
+
+#tabs ul.tabs.primary li a {
+  padding: 8px 17px;
+  margin: 0px;
+  background-color: #a6a7a2;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #222222;
+  border: 1px solid #a6a7a2
+}
+
+#tabs ul.tabs.primary li a:hover {
+  color: #ffffff;
+}
+
+#tabs ul.tabs.primary li.active a:hover,
+#tabs ul.tabs.primary li.active a {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+/* ---------- Messages ---------- */
+
+#messages {
+  background-color: #e0e0d8;
+}
+
+#messages .messages-wrapper-inner {
+  padding: 12px 15px 5px;
+}
+
+#messages .messages .item-list ul {
+  list-style: none;
+}
+
+#messages .messages {
+  padding: 10px 10px 10px 50px;
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  margin: 6px 0;
+  font: 0.85em/1.5em "Lucida Grande","Lucida Sans Unicode",sans-serif;
+}
+
+#messages .messages.status {
+  border: 1px solid #bbee77;
+  background-color: #f8fff0;
+  background-image: url("../images/misc/message-24-ok.png");
+  color: #234600;
+}
+
+#messages .messages.warning {
+  border: 1px solid #eedd55;
+  background-color: #fffce5;
+  background-image: url("../images/misc/message-24-warning.png");
+  color: #884400;
+}
+
+#messages .messages.error {
+  border: 1px solid #ed541d;
+  background-color: #fef5f1;
+  background-image: url("../images/misc/message-24-error.png");
+  color: #8c2e0b;
+}
+
+/* ---------- Collapsible elements ----------- */
+
+.collapsed .fieldset-wrapper {
+  display: none;
+}
+
+/* ---------- Code, Pre, KBD, Var, Samp ---------- */
+
+code,
+pre,
+kbd,
+samp,
+var {
+  padding: 0 1em;
+  font-size: 1em;
+  font-family: Menlo, Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono L", "DejaVu Sans Mono", monospace, "Courier New";
+}
+code {
+  background-color: #f2f2f2;
+  background-color: rgba(40, 40, 0, 0.06);
+}
+pre code,
+pre kbd,
+pre samp,
+pre var,
+kbd kbd,
+kbd samp,
+code var {
+  font-size: 100%;
+  background-color: transparent;
+}
+pre code,
+pre samp,
+pre var {
+  padding: 0;
+}
+.description code {
+  font-size: 1em;
+}
+kbd {
+  background-color: #f2f2f2;
+  border: 1px outset #575757;
+  margin: 0 3px;
+  color: #666;
+  display: inline-block;
+  padding: 0 6px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+pre {
+  background-color: #f2f2f2;
+  background-color: rgba(40, 40, 0, 0.06);
+  margin: 10px 0;
+  overflow: hidden;
+  padding: 15px;
+  white-space: pre-wrap;
+}
+
+/* ---------- Admin menu overrides ---------- */
+
+#admin-menu {
+  box-shadow: none;
+}

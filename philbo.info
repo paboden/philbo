@@ -1,0 +1,48 @@
+name = Philbo
+description = A flexible, recolorable theme with many regions.
+package = Core
+version = VERSION
+core = 7.x
+
+; Regions
+regions[page_top]                       = Page top
+regions[header]                         = Header
+regions[menu]                           = Menu
+regions[content]                        = Content
+regions[sidebar_first]                  = Sidebar first
+regions[sidebar_second]                 = Sidebar second
+regions[footer]                         = Footer
+regions[page_bottom]                    = Page bottom
+
+; Settings
+settings[shortcut_module_link]          = 0
+settings[philbo_breadcrumb]             = yes
+settings[philbo_breadcrumb_separator]   = ' › '
+settings[philbo_breadcrumb_home]        = 1
+settings[philbo_breadcrumb_trailing]    = 0
+settings[philbo_breadcrumb_title]       = 0
+settings[philbo_skip_link_anchor]       = main-menu
+settings[philbo_skip_link_text]         = Jump to navigation
+
+; Stylesheets
+stylesheets[all][]                      = css/color.css
+stylesheets[all][]                      = css/screen.css
+sstylesheets[print][]                    = css/print.css
+
+; Javascript
+;scripts[]                               = js/modernizr-2.6.1.min.js
+
+; Panels
+plugins[panels][layouts]                = panels/layouts
+plugins[panels][styles]                 = panels/styles
+
+; Features
+features[]                              = logo
+features[]                              = name
+features[]                              = favicon
+features[]                              = main_menu
+features[]                              = secondary_menu
+features[]                              = slogan
+features[]                              = node_user_picture
+features[]                              = comment_user_picture
+features[]                              = comment_user_verification
