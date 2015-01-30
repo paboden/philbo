@@ -5,25 +5,26 @@
 
 //
 // Layout rules
-@import 'partials/fonts/fonts';
-@import 'partials/base/base';
-@import 'partials/system/system';
-@import 'partials/misc/misc';
-@import 'partials/forms/forms';
-@import 'partials/layouts/layouts';
+@import 'partials/fonts/*';
+@import 'partials/base/*';
+@import 'partials/system_overrides/*';
+@import 'partials/contrib_overrides/*';
+@import 'partials/misc/*';
+@import 'partials/forms/*';
+@import 'partials/layouts/*';
 
 //
 // Region styling
-@import 'partials/regions/regions';
+@import 'partials/regions/*';
 
 //
 // Content type styling
-@import 'partials/content_types/content_types';
+@import 'partials/content_types/*';
 
 //
 // View styling
-@import 'partials/views/views';
+@import 'partials/views/*';
 
 //
 // Panels styling
-@import 'partials/panels/panels';
+@import 'partials/panels/*';

@@ -12,6 +12,7 @@ function philbo_preprocess_block(&$vars) {
   //
   // Set shortcut variables. Hooray for less typing!
   $block_id = $vars['block']->module . '-' . $vars['block']->delta;
+  $module = $vars['block']->module;
   $classes = &$vars['classes_array'];
   $title_classes = &$vars['title_attributes_array']['class'];
   $content_classes = &$vars['content_attributes_array']['class'];
@@ -59,6 +60,19 @@ function philbo_preprocess_block(&$vars) {
     case 'system-main':
       $use_title_wrapper = FALSE;
       $subject = '';
+  }
+
+  switch ($module) {
+    case 'views':
+    $displays = isset($vars['elements']['#views_contextual_links_info']) ? $vars['elements']['#views_contextual_links_info']['views_ui']['view']->display : NULL;
+    if ($displays) {
+      foreach ($displays as $display) {
+        if ($display->display_plugin == 'block') {
+          $classes[] = isset($display->display_options['block_css_class']) ? $display->display_options['block_css_class'] : NULL;
+        }
+      }
+    }
+    break;
   }
 }
 

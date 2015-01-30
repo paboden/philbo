@@ -83,82 +83,74 @@
  */
 ?>
 <?php if ($messages): ?>
-<div id="messages" class="messages-wrapper clearfix">
-  <div class="messages-wrapper-inner container">
+<div id="messages" class="clearfix">
+  <div class="container">
     <?php print $messages; ?>
   </div>
 </div>
 <?php endif; ?>
 
 <?php if ($tabs['#primary']): ?>
-<div id="tabs" class="tabs-wrapper clearfix">
-  <div class="tabs-wrapper-inner container">
+<div id="tabs" class="clearfix">
+  <div class="container">
     <?php print render($tabs);?>
-  </div> <!-- /.tabs-wrapper-inner -->
-</div> <!-- /.tabs-wrapper -->
+  </div>
+</div>
 <?php endif; ?>
 
-<div id="header" class="header-wrapper clearfix">
-  <div class="header-wrapper-inner">
-    <div class="logo-wrapper">
-    <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-      </a>
-    <?php endif; ?>
-    </div>
-    <?php if ($page['header']): ?>
-      <?php print render($page['header']); ?>
-    <?php endif; ?>
+<div id="header" class="clearfix">
+  <div class="logo-wrapper">
+  <?php if ($logo): ?>
+    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+      <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+    </a>
+  <?php endif; ?>
   </div>
+  <?php if ($page['header']): ?>
+    <?php print render($page['header']); ?>
+  <?php endif; ?>
 </div>
 
 <?php if ($page['menu']): ?>
-<div id="menu" class="menu-wrapper clearfix">
-  <div class="menu-wrapper-inner">
+<div id="menu" class="clearfix">
+  <div class="container">
     <?php print render($page['menu']); ?>
   </div>
 </div>
 <?php endif; ?>
 
 <?php if (isset($breadcrumb)): ?>
-<div id="breadcrumb" class="breadcrumb-wrapper clearfix">
-  <div class="breadcrumb-wrapper-inner container">
+<div id="breadcrumb" class="clearfix">
+  <div class="container">
     <?php print $breadcrumb; ?>
   </div>
 </div>
 <?php endif; ?>
 
-<div id="page" class="page-wrapper clearfix">
-  <div class="page-wrapper-inner container">
+<div id="page" class="clearfix">
+  <div class="container">
 
-    <div id="content" class="content-wrapper">
-      <div class="content-wrapper-inner">
-        <?php if (($title) && (!isset($node))): ?>
-          <div id="title" class="title-wrapper clearfix">
-            <?php print render($title_prefix); ?>
-            <h1 id="page-title"><?php print $title; ?></h1>
-            <?php print render($title_suffix); ?>
-          </div> <!-- /.title -->
-        <?php endif; ?>
-        <?php print render($page['content']); ?>
-        <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
+    <div id="content">
+      <?php if (($title) && (!isset($node))): ?>
+      <div id="title" class="title-wrapper clearfix">
+        <?php print render($title_prefix); ?>
+        <h1 id="page-title"><?php print $title; ?></h1>
+        <?php print render($title_suffix); ?>
       </div>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
+      <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
     </div>
 
     <?php if ($page['sidebar_first']): ?>
-    <div id="sidebar-first" class="sidebar-wrapper-first">
-      <div class="sidebar-wrapper-first-inner">
-        <?php print render($page['sidebar_first']); ?>
-      </div>
+    <div id="sidebar-first">
+      <?php print render($page['sidebar_first']); ?>
     </div>
     <?php endif; ?>
 
     <?php if ($page['sidebar_second']): ?>
-    <div id="sidebar-second" class="sidebar-wrapper-second">
-      <div class="sidebar-wrapper-second-inner">
-        <?php print render($page['sidebar_second']); ?>
-      </div>
+    <div id="sidebar-second">
+      <?php print render($page['sidebar_second']); ?>
     </div>
     <?php endif; ?>
 
@@ -166,8 +158,8 @@
 </div>
 
 <?php if ($page['footer']): ?>
-<div id="footer" class="footer-wrapper clearfix">
-  <div class="footer-wrapper-inner container">
+<div id="footer" class="clearfix">
+  <div class="container">
     <?php print render($page['footer']); ?>
   </div>
 </div>

@@ -20,6 +20,12 @@ function philbo_js_alter(&$javascript) {
 
   //
   // No jquery from core. we add our own later
+  if (isset($javascript['http://code.jquery.com/jquery-1.7.1.min.js'])) {
+    unset($javascript['http://code.jquery.com/jquery-1.7.1.min.js']);
+  }
+
+  //
+  // No jquery from core. we add our own later
   if (isset($javascript['misc/jquery.once.js'])) {
     unset($javascript['misc/jquery.once.js']);
   }

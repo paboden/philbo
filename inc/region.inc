@@ -35,11 +35,8 @@ function philbo_preprocess_region(&$variables) {
   // Set our specific cases per region
   switch($region) {
     case 'menu' :
-    $use_region_inner_wrapper = TRUE;
     break;
     case 'content' :
-    $use_region_inner_wrapper = TRUE;
-    $inner_classes[] = 'bacon';
     break;
   }
 

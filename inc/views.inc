@@ -21,6 +21,14 @@ function philbo_preprocess_views_view(&$vars) {
   $view = $vars['view'];
   $view_name = $view->name;
 
+  foreach ($view->display as $display) {
+    if ($display->display_plugin == 'block') {
+      $display->display_options['block_css_class'] = $display->display_options['css_class'];
+      if(($key = array_search($display->display_options['css_class'], $vars['classes_array'])) !== false) {
+        unset($vars['classes_array'][$key]);
+      }
+    }
+  }
 }
 
 /**
