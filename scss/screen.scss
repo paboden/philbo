@@ -1,0 +1,29 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+//
+// Layout rules
+@import 'partials/fonts/fonts';
+@import 'partials/base/base';
+@import 'partials/system/system';
+@import 'partials/misc/misc';
+@import 'partials/forms/forms';
+@import 'partials/layouts/layouts';
+
+//
+// Region styling
+@import 'partials/regions/regions';
+
+//
+// Content type styling
+@import 'partials/content_types/content_types';
+
+//
+// View styling
+@import 'partials/views/views';
+
+//
+// Panels styling
+@import 'partials/panels/panels';

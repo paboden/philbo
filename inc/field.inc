@@ -87,13 +87,11 @@ function philbo_preprocess_field(&$vars) {
 
     case 'field_image__article__full':
     $label_hidden = FALSE;
-    $label = t('Article image');
     $label_wrapper_element = 'h2';
     break;
 
     case 'field_image__article__teaser':
     $label_hidden = FALSE;
-    $label = t('Image');
     $label_wrapper_element = 'h3';
     break;
 

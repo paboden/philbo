@@ -27,8 +27,16 @@ function philbo_preprocess_page(&$vars) {
       $function($vars);
     }
   }
+
   if (isset($vars['classes_array'])) {
     $classes_array = $vars['classes_array'];
+  }
+
+  //
+  // Determine if the page is rendered using panels.
+  $variables['is_panel'] = FALSE;
+  if (module_exists('page_manager') && count(page_manager_get_current_page())) {
+    $variables['is_panel'] = TRUE;
   }
 }
 

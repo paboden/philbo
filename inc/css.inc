@@ -53,6 +53,12 @@ function philbo_css_alter(&$css) {
   }
 
   //
+  // No styles from comment
+  if (isset($css['modules/contextual/contextual.css'])) {
+    unset($css['modules/contextual/contextual.css']);
+  }
+
+  //
   // No styles from poll
   if (isset($css['modules/poll/poll.css'])) {
     unset($css['modules/poll/poll.css']);
@@ -95,6 +101,30 @@ function philbo_css_alter(&$css) {
   }
 
   //
+  // No styles from comment
+  if (isset($css['modules/taxonomy/taxonomy.css'])) {
+    unset($css['modules/taxonomy/taxonomy.css']);
+  }
+
+  //
+  // No styles from shortcuts if admin menu component is turned off
+  if (module_exists('ctools')) {
+    $ctools = drupal_get_path('module', 'ctools');
+    if (isset($css[$ctools . '/css/ctools.css'])) {
+      unset($css[$ctools . '/css/ctools.css']);
+    }
+  }
+
+  //
+  // No styles from shortcuts if admin menu component is turned off
+  if (module_exists('panels')) {
+    $ctools = drupal_get_path('module', 'panels');
+    if (isset($css[$ctools . '/css/panels.css'])) {
+      unset($css[$ctools . '/css/panels.css']);
+    }
+  }
+
+  //
   // No styles from shortcuts if admin menu component is turned off
   if (module_exists('admin_menu')) {
     $components = variable_get('admin_menu_components', array());
@@ -105,11 +135,12 @@ function philbo_css_alter(&$css) {
 
   //
   // No styles from nice_menus
-  $nice_menus = drupal_get_path('module', 'nice_menus');
-  if (isset($css[$nice_menus . '/css/nice_menus_default.css'])) {
-    unset($css[$nice_menus . '/css/nice_menus_default.css']);
+  if (module_exists('nice_menus')) {
+    $nice_menus = drupal_get_path('module', 'nice_menus');
+    if (isset($css[$nice_menus . '/css/nice_menus_default.css'])) {
+      unset($css[$nice_menus . '/css/nice_menus_default.css']);
+    }
   }
-
   //
   // No styles from field_group horizontal tabs
   $field_group = drupal_get_path('module', 'field_group');

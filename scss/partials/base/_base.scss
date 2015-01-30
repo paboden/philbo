@@ -1,0 +1,93 @@
+
+/* ---------- Basic override system settings ---------- */
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  line-height: 1.4em;
+  font-size: 87.5%;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.element-hidden,
+.element-invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 0 1em;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+img {
+  outline: 0;
+}
+
+/* ---------- Unordered and Ordered Lists ---------- */
+
+ul,
+ol,
+li {
+  margin: 0 0 1em;
+}
+
+ul,
+ol {
+  display: block;
+}
+
+ul.inline, ul.links.inline {
+  display: inline;
+  padding-left: 0;
+}
+
+ul.inline li {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+}

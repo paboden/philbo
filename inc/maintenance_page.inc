@@ -14,8 +14,8 @@ function philbo_preprocess_maintenance_page(&$vars, $hook) {
   // When a variable is manipulated or added in preprocess_html or
   // preprocess_page, that same work is probably needed for the maintenance page
   // as well, so we can just re-use those functions to do that work here.
-  philbo_preprocess_html($variables, $hook);
-  philbo_preprocess_page($variables, $hook);
+  philbo_preprocess_html($vars, $hook);
+  philbo_preprocess_page($vars, $hook);
 
   //
   // This preprocessor will also be used if the db is inactive. To ensure your
@@ -35,8 +35,8 @@ function philbo_preprocess_maintenance_page(&$vars, $hook) {
   // or during site installation. Setting site_name to an empty string makes
   // the site and update pages look cleaner.
   // @see template_preprocess_maintenance_page
-  if (!$variables['db_is_active']) {
-    $variables['site_name'] = '';
+  if (!$vars['db_is_active']) {
+    $vars['site_name'] = '';
   }
   drupal_add_css(drupal_get_path('theme', 'bartik') . '/css/maintenance-page.css');
 }
@@ -51,16 +51,16 @@ function philbo_process_maintenance_page(&$vars, $hook) {
   //
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
-  $variables['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
-  $variables['hide_site_slogan'] = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
-  if ($variables['hide_site_name']) {
+  $vars['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
+  $vars['hide_site_slogan'] = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
+  if ($vars['hide_site_name']) {
     //
     // If toggle_name is FALSE, the site_name will be empty, so we rebuild it.
-    $variables['site_name'] = filter_xss_admin(variable_get('site_name', 'Drupal'));
+    $vars['site_name'] = filter_xss_admin(variable_get('site_name', 'Drupal'));
   }
-  if ($variables['hide_site_slogan']) {
+  if ($vars['hide_site_slogan']) {
     //
     // If toggle_site_slogan is FALSE, the site_slogan will be empty, so we rebuild it.
-    $variables['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
+    $vars['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
   }
 }
