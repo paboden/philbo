@@ -58,7 +58,9 @@ function philbo_preprocess_node__article(&$vars, $hook) {
   if ($mode == 'full') {
     //
     // Create a variable that can be printed on any related article template.
-    $vars['view_embed_variable'] = views_embed_view('VIEW_NAME', 'DISPLAY_NAME');
+    if (module_exists('views')) {
+      $vars['view_embed_variable'] = views_embed_view('VIEW_NAME', 'DISPLAY_NAME');
+    }
   }
 
   if ($mode == 'teaser') {

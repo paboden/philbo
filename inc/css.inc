@@ -126,11 +126,14 @@ function philbo_css_alter(&$css) {
 
   //
   // No styles from shortcuts if admin menu component is turned off
+/*
   if (module_exists('admin_menu')) {
     $admin_menu = drupal_get_path('module', 'admin_menu');
     $components = variable_get('admin_menu_components', array());
-    if (($components['shortcut.links'] != 1) && (isset($css['modules/shortcut/shortcut.css']))) {
-      unset($css['modules/shortcut/shortcut.css']);
+    if (isset($components['shortcut.links'])) {
+      if (($components['shortcut.links'] != 1) && (isset($css['modules/shortcut/shortcut.css']))) {
+        unset($css['modules/shortcut/shortcut.css']);
+      }
     }
     if (isset($css[$admin_menu . '/admin_menu.css'])) {
       unset($css[$admin_menu . '/admin_menu.css']);
@@ -139,15 +142,18 @@ function philbo_css_alter(&$css) {
       unset($css[$admin_menu . '/admin_menu.uid1.css']);
     }
   }
+*/
 
   //
   // No styles from shortcuts if admin menu component is turned off
+/*
   if (module_exists('admin_menu_toolbar')) {
     $admin_menu_toolbar = drupal_get_path('module', 'admin_menu_toolbar');
     if (isset($css[$admin_menu_toolbar . '/admin_menu_toolbar.css'])) {
       unset($css[$admin_menu_toolbar . '/admin_menu_toolbar.css']);
     }
   }
+*/
 
   //
   // No styles from nice_menus

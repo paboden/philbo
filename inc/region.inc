@@ -9,12 +9,12 @@ function philbo_preprocess_region(&$variables) {
   //
   // Create the $content variable that templates expect.
   $variables['content'] = $variables['elements']['#children'];
-  $variables['region'] = $variables['elements']['#region'];
-  $region = $variables['region'];
+  $region = $variables['elements']['#region'];
   $variables['inner_classes'] = array();
 
   //
   // Region (outer) wrapper.
+  $variables['id'] = 'region-' . drupal_html_id($region);
   $variables['region_wrapper_element'] = 'div';
   $region_wrapper_element = &$variables['region_wrapper_element'];
 
@@ -35,6 +35,7 @@ function philbo_preprocess_region(&$variables) {
   // Set our specific cases per region
   switch($region) {
     case 'menu' :
+    $region_wrapper_element = 'nav';
     break;
     case 'content' :
     break;

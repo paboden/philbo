@@ -45,25 +45,22 @@
  */
 ?>
 <<?php print $wrapper_element; ?> id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-
+  <?php if ($display_title) : ?>
   <?php print render($title_prefix); ?>
-
   <?php if ($use_title_wrapper) : ?>
-    <<?php print $title_wrapper_element; ?> <?php print $title_attributes; ?>>
-      <?php print $block->subject ?>
-    </<?php print $title_wrapper_element; ?>>
+  <<?php print $title_wrapper_element; ?> <?php print $title_attributes; ?>>
+    <?php print $block->subject ?>
+  </<?php print $title_wrapper_element; ?>>
   <?php else : ?>
-      <?php print $block->subject ?>
+  <?php print $block->subject ?>
   <?php endif; ?>
-
   <?php print render($title_suffix); ?>
-
+  <?php endif; ?>
   <?php if ($use_content_wrapper) : ?>
-    <<?php print $content_wrapper_element; ?> <?php print $content_attributes; ?>>
-      <?php print $content ?>
-    </<?php print $content_wrapper_element; ?>>
+  <<?php print $content_wrapper_element; ?> <?php print $content_attributes; ?>>
+    <?php print $content ?>
+  </<?php print $content_wrapper_element; ?>>
   <?php else : ?>
     <?php print $content ?>
   <?php endif; ?>
-
 </<?php print $wrapper_element; ?>>

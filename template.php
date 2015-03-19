@@ -9,6 +9,7 @@ require_once dirname(__FILE__) . '/inc/breadcrumb.inc';
 require_once dirname(__FILE__) . '/inc/comments.inc';
 require_once dirname(__FILE__) . '/inc/css.inc';
 require_once dirname(__FILE__) . '/inc/field.inc';
+require_once dirname(__FILE__) . '/inc/form_alter.inc';
 require_once dirname(__FILE__) . '/inc/form.inc';
 require_once dirname(__FILE__) . '/inc/html.inc';
 require_once dirname(__FILE__) . '/inc/js.inc';

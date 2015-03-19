@@ -1,0 +1,41 @@
+
+/* ---------- Messages ---------- */
+
+#messages {
+  background-color: #e0e0d8;
+  padding: 12px 15px 5px;
+}
+
+#messages .messages .item-list ul {
+  list-style: none;
+}
+
+#messages .messages {
+  padding: 10px 10px 10px 50px;
+  background-color: #e0e0d8;
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  margin: 6px 0;
+  font: 0.85em/1.5em "Lucida Grande","Lucida Sans Unicode",sans-serif;
+}
+
+#messages .messages.status {
+  border: 1px solid #bbee77;
+  background-color: #f8fff0;
+  background-image: url("../images/misc/message-24-ok.png");
+  color: #234600;
+}
+
+#messages .messages.warning {
+  border: 1px solid #eedd55;
+  background-color: #fffce5;
+  background-image: url("../images/misc/message-24-warning.png");
+  color: #884400;
+}
+
+#messages .messages.error {
+  border: 1px solid #ed541d;
+  background-color: #fef5f1;
+  background-image: url("../images/misc/message-24-error.png");
+  color: #8c2e0b;
+}

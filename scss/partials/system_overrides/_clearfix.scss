@@ -1,0 +1,18 @@
+
+/* ---------- Clearfix and hidden  ---------- */
+
+.element-hidden,
+.element-invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}

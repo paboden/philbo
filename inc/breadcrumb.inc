@@ -19,6 +19,7 @@ function philbo_breadcrumb(&$vars) {
   $breadcrumb = $vars['breadcrumb'];
 
   if (!empty($breadcrumb)) {
+    //
     // Remove menu-minipanel references from the breadcrumb links
     foreach ($breadcrumb as $key => $link) {
       while ($start = strpos($link, 'menu-minipanel')) {
@@ -35,15 +36,23 @@ function philbo_breadcrumb(&$vars) {
       }
     }
 
-    $before = '<span class="breadcrumb__link">';
-    $after = '</span>';
-    $breadcrumb_separator = '<span class="breadcrumb__separator"> > </span>';
+    //
+    // Customize your breadcrumb separator text here.
+    $breadcrumb_separator_text = '>>';
 
+    //
+    // Build out the full separator. This will be placed inbetween each breadcrumb
+    // trail item.
+    $before = '<span class="breadcrumb--link">';
+    $after = '</span>';
+    $breadcrumb_separator = '<span class="breadcrumb--separator"> ' . $breadcrumb_separator_text . ' </span>';
+
+    //
+    // Build out our full breadcrumb string
+    // @TODO: build this into a template using a render array.
     $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
-    $output .= '<div class="breadcrumb">';
     $output .= $before . implode($after . $breadcrumb_separator . $before, $breadcrumb) . $after;
     $output .= $breadcrumb_separator . '<span class="active">'. drupal_get_title() .'</span>';
-    $output .= '</div>';
 
     return $output;
   }

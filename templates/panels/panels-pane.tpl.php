@@ -20,6 +20,7 @@
 <?php if ($pane_prefix): ?>
   <?php print $pane_prefix; ?>
 <?php endif; ?>
+
 <div class="<?php print $classes; ?>" <?php print $id; ?> <?php print $attributes; ?>>
   <?php if ($admin_links): ?>
     <?php print $admin_links; ?>
@@ -27,14 +28,14 @@
 
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
-    <h2 class="pane-title"><?php print $title; ?></h2>
+  <h2 class="pane-title"><?php print $title; ?></h2>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
   <?php if ($feeds): ?>
-    <div class="feed">
-      <?php print $feeds; ?>
-    </div>
+  <div class="pane-feed feed">
+    <?php print $feeds; ?>
+  </div>
   <?php endif; ?>
 
   <div class="pane-content">
@@ -42,17 +43,18 @@
   </div>
 
   <?php if ($links): ?>
-    <div class="links">
-      <?php print $links; ?>
-    </div>
+  <div class="pane-links links">
+    <?php print $links; ?>
+  </div>
   <?php endif; ?>
 
   <?php if ($more): ?>
-    <div class="more-link">
-      <?php print $more; ?>
-    </div>
+  <div class="pane-more-link more-link">
+    <?php print $more; ?>
+  </div>
   <?php endif; ?>
 </div>
+
 <?php if ($pane_suffix): ?>
   <?php print $pane_suffix; ?>
 <?php endif; ?>

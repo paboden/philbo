@@ -11,7 +11,7 @@
 function philbo_preprocess_block(&$vars) {
   //
   // Set shortcut variables. Hooray for less typing!
-  $block_id = $vars['block']->module . '-' . $vars['block']->delta;
+  $block_id = $vars['block']->module . '--' . $vars['block']->delta;
   $module = $vars['block']->module;
   $classes = &$vars['classes_array'];
   $title_classes = &$vars['title_attributes_array']['class'];
@@ -26,6 +26,8 @@ function philbo_preprocess_block(&$vars) {
 
   //
   // Use a title wrapper
+  $vars['display_title'] = TRUE;
+  $display_title = &$vars['display_title'];
   $vars['use_title_wrapper'] = TRUE;
   $use_title_wrapper = &$vars['use_title_wrapper'];
   $vars['title_wrapper_element'] = 'h2';
@@ -47,7 +49,8 @@ function philbo_preprocess_block(&$vars) {
   //
   // Alter blocks based on their ID (module-delta).
   switch ($block_id) {
-    case 'system-main-menu':
+    case 'system--main-menu':
+      $display_title = FALSE;
       $classes[] = '';
       $title_classes[] = '';
       $content_classes[] = '';
@@ -57,9 +60,16 @@ function philbo_preprocess_block(&$vars) {
       $use_content_wrapper = TRUE;
       $content_wrapper_element = 'div';
       break;
-    case 'system-main':
-      $use_title_wrapper = FALSE;
-      $subject = '';
+    case 'system--main':
+      $display_title = FALSE;
+      break;
+    case 'system--powered-by' :
+      $display_title = FALSE;
+      break;
+    case 'user--login' :
+      $display_title = TRUE;
+      $subject = t('Login to admin your site');
+      break;
   }
 
   switch ($module) {

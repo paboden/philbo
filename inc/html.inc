@@ -10,16 +10,22 @@
  */
 function philbo_preprocess_html(&$vars) {
   //
-  // For each region that has content, add a class to the body tag
+  // For each region that has content, add a class of 'REGION-active' to the body,
   // This is helpful for knowing if a sidebar or footer region has content
   // for triggering some javascript or refining our css for different layouts
+  // For each region that has no content, add a class of 'REGION-inactive'.
   global $theme;
   $regions = system_region_list($theme);
   foreach ($regions as $region => $region_name) {
     if (!empty($vars['page'][$region])) {
       $region = drupal_html_class($region);
-      $vars['classes_array'][] = $region;
+      $vars['classes_array'][] = $region . '-active';
     }
+    else {
+      $region = drupal_html_class($region);
+      $vars['classes_array'][] = $region . '-inactive';
+    }
+
   }
 
   //
@@ -119,11 +125,4 @@ function philbo_process_html_tag(&$vars) {
   if (isset($element['#attributes']['media']) && $element['#attributes']['media'] === 'all') {
     unset($element['#attributes']['media']);
   }
-}
-
-/**
- * Override or insert variables into the page template for HTML output.
- */
-function philbo_process_html(&$variables) {
-
 }
