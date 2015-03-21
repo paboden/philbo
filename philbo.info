@@ -25,13 +25,14 @@ settings[philbo_skip_link_anchor]       = main-menu
 settings[philbo_skip_link_text]         = Jump to navigation
 
 ; Stylesheets
-;stylesheets[all][]                      = css/color.css
+;stylesheets[all][]                     = css/color.css
+;stylesheets[print][]                   = css/print.css
 stylesheets[all][]                      = css/screen.css
-;stylesheets[print][]                    = css/print.css
 
 ; Javascript
 ;scripts[]                              = js/modernizr-2.6.1.min.js
-scripts[]                               = js/system.js
+;scripts[]                              = js/system.js
+scripts[]                               = js/system.min.js
 
 ; Panels
 plugins[panels][layouts]                = panels/layouts

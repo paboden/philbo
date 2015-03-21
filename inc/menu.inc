@@ -11,8 +11,8 @@
 function philbo_preprocess_menu_link(&$vars) {
   //
   // Set shortcut variables. Hooray for less typing!
-  $menu = $vars['element']['#original_link']['menu_name'];
-  $mlid = $vars['element']['#original_link']['mlid'];
+  $menu = isset($vars['element']['#original_link']['menu_name']) ? $vars['element']['#original_link']['menu_name'] : null;
+  $mlid = isset($vars['element']['#original_link']['mlid']) ? $vars['element']['#original_link']['mlid'] : null;
   $item_classes = &$vars['element']['#attributes']['class'];
   $link_classes = &$vars['element']['#localized_options']['attributes']['class'];
 

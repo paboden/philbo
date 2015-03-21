@@ -67,9 +67,11 @@
 
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
+  <?php if (isset($result['type'])): ?>
   <div class="search-result__type">
     <?php print $result['type']; ?>
   </div>
+  <?php endif; ?>
 
   <div class="search-result__content">
     <h3 class="search-result__title">

@@ -42,7 +42,6 @@ function philbo_preprocess_block(&$vars) {
 
   //
   // Add global classes to all blocks.
-  $classes[] = drupal_html_class($block_id);
   $title_classes[] = 'block-title';
   $content_classes[] = 'block-content';
 

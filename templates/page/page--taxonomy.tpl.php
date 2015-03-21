@@ -82,86 +82,79 @@
  * @ingroup themeable
  */
 ?>
+
 <?php if ($messages): ?>
-<div id="messages" class="messages-wrapper clearfix">
-  <div class="messages-wrapper-inner container">
+<div id="messages">
+  <div class="container">
     <?php print $messages; ?>
   </div>
 </div>
 <?php endif; ?>
 
 <?php if ($tabs['#primary']): ?>
-<div id="tabs" class="tabs-wrapper clearfix">
-  <div class="tabs-wrapper-inner container">
+<div id="tabs">
+  <div class="container">
     <?php print render($tabs);?>
-  </div> <!-- /.tabs-wrapper-inner -->
-</div> <!-- /.tabs-wrapper -->
+  </div>
+</div>
 <?php endif; ?>
 
-<div id="header" class="header-wrapper clearfix">
-  <div class="header-wrapper-inner">
-    <div class="logo-wrapper">
+<header>
+  <div id="header">
     <?php if ($logo): ?>
+    <div class="logo-wrapper">
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
         <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
       </a>
-    <?php endif; ?>
     </div>
+    <?php endif; ?>
+
     <?php if ($page['header']): ?>
       <?php print render($page['header']); ?>
     <?php endif; ?>
   </div>
-</div>
+</header>
 
-<?php if ($page['menu']): ?>
-<div id="menu" class="menu-wrapper clearfix">
-  <div class="menu-wrapper-inner">
+<nav>
+  <?php if ($page['menu']): ?>
     <?php print render($page['menu']); ?>
-  </div>
-</div>
-<?php endif; ?>
+  <?php endif; ?>
+</nav>
 
 <?php if (isset($breadcrumb)): ?>
-<div id="breadcrumb" class="breadcrumb-wrapper clearfix">
-  <div class="breadcrumb-wrapper-inner container">
+<div id="breadcrumb">
+  <div class="container">
     <?php print $breadcrumb; ?>
   </div>
 </div>
 <?php endif; ?>
 
-<div id="page" class="page-wrapper clearfix">
-  <div class="page-wrapper-inner container">
-
-    <div id="content" class="content-wrapper">
-      <div class="content-wrapper-inner">
-        <?php print render($page['content']); ?>
-        <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
+<section>
+  <div id="content">
+    <div class="container">
+      <?php if (($title) && (!isset($node))): ?>
+      <div class="title-wrapper">
+        <?php print render($title_prefix); ?>
+        <h1 id="page-title"><?php print $title; ?></h1>
+        <?php print render($title_suffix); ?>
       </div>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
+      <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
     </div>
 
     <?php if ($page['sidebar_first']): ?>
-    <div id="sidebar-first" class="sidebar-wrapper-first">
-      <div class="sidebar-wrapper-first-inner">
-        <?php print render($page['sidebar_first']); ?>
-      </div>
-    </div>
+      <?php print render($page['sidebar_first']); ?>
     <?php endif; ?>
 
     <?php if ($page['sidebar_second']): ?>
-    <div id="sidebar-second" class="sidebar-wrapper-second">
-      <div class="sidebar-wrapper-second-inner">
-        <?php print render($page['sidebar_second']); ?>
-      </div>
-    </div>
+      <?php print render($page['sidebar_second']); ?>
     <?php endif; ?>
-
   </div>
-</div>
+</section>
 
 <?php if ($page['footer']): ?>
-<div id="footer" class="footer-wrapper clearfix">
-  <div class="footer-wrapper-inner container">
-    <?php print render($page['footer']); ?>
-  </div>
-</div>
+<footer>
+  <?php print render($page['footer']); ?>
+</footer>
 <?php endif; ?>

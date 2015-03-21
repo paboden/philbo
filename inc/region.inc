@@ -10,7 +10,18 @@ function philbo_preprocess_region(&$variables) {
   // Create the $content variable that templates expect.
   $variables['content'] = $variables['elements']['#children'];
   $region = $variables['elements']['#region'];
+
+  //
+  // Reset the classes array to just contain region.
+  $variables['classes_array'] = array();
+  $classes = &$variables['classes_array'];
+  $classes[] = 'region';
+
+  //
+  // Set the default inner region wrapper classes to region-inner.
   $variables['inner_classes'] = array();
+  $inner_classes = &$variables['inner_classes'];
+  $inner_classes[] = 'region-inner';
 
   //
   // Region (outer) wrapper.
@@ -24,20 +35,18 @@ function philbo_preprocess_region(&$variables) {
   $use_region_inner_wrapper = &$variables['use_region_inner_wrapper'];
   $variables['region_inner_wrapper_element'] = 'div';
   $region_inner_wrapper_element = &$variables['region_inner_wrapper_element'];
-  $inner_classes = &$variables['inner_classes'];
-
-  //
-  // Create default inner region wrapper classes
-  $inner_classes[] = 'region-inner';
-  $inner_classes[] = 'region-' . drupal_html_class($region) . '-inner';
 
   //
   // Set our specific cases per region
   switch($region) {
-    case 'menu' :
-    $region_wrapper_element = 'nav';
-    break;
     case 'content' :
+    $region_wrapper_element = 'section';
+    break;
+    case 'sidebar_first' :
+    $region_wrapper_element = 'aside';
+    break;
+    case 'sidebar_second' :
+    $region_wrapper_element = 'aside';
     break;
   }
 

@@ -99,22 +99,27 @@
 </div>
 <?php endif; ?>
 
-<div id="header">
-  <div class="logo-wrapper">
-  <?php if ($logo): ?>
-    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-      <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-    </a>
-  <?php endif; ?>
-  </div>
-  <?php if ($page['header']): ?>
-    <?php print render($page['header']); ?>
-  <?php endif; ?>
-</div>
+<header>
+  <div id="header">
+    <?php if ($logo): ?>
+    <div class="logo-wrapper">
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+      </a>
+    </div>
+    <?php endif; ?>
 
-<?php if ($page['menu']): ?>
-  <?php print render($page['menu']); ?>
-<?php endif; ?>
+    <?php if ($page['header']): ?>
+      <?php print render($page['header']); ?>
+    <?php endif; ?>
+  </div>
+</header>
+
+<nav>
+  <?php if ($page['menu']): ?>
+    <?php print render($page['menu']); ?>
+  <?php endif; ?>
+</nav>
 
 <?php if (isset($breadcrumb)): ?>
 <div id="breadcrumb">
@@ -124,30 +129,32 @@
 </div>
 <?php endif; ?>
 
-<div id="content">
-  <div class="container">
-    <?php if (($title) && (!isset($node))): ?>
-    <div id="title" class="title-wrapper">
-      <?php print render($title_prefix); ?>
-      <h1 id="page-title"><?php print $title; ?></h1>
-      <?php print render($title_suffix); ?>
+<section>
+  <div id="content">
+    <div class="container">
+      <?php if (($title) && (!isset($node))): ?>
+      <div class="title-wrapper">
+        <?php print render($title_prefix); ?>
+        <h1 id="page-title"><?php print $title; ?></h1>
+        <?php print render($title_suffix); ?>
+      </div>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
+      <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
     </div>
+
+    <?php if ($page['sidebar_first']): ?>
+      <?php print render($page['sidebar_first']); ?>
     <?php endif; ?>
-    <?php print render($page['content']); ?>
-    <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
+
+    <?php if ($page['sidebar_second']): ?>
+      <?php print render($page['sidebar_second']); ?>
+    <?php endif; ?>
   </div>
-
-  <?php if ($page['sidebar_first']): ?>
-    <?php print render($page['sidebar_first']); ?>
-  <?php endif; ?>
-
-  <?php if ($page['sidebar_second']): ?>
-    <?php print render($page['sidebar_second']); ?>
-  <?php endif; ?>
-</div>
+</section>
 
 <?php if ($page['footer']): ?>
-<div id="footer">
+<footer>
   <?php print render($page['footer']); ?>
-</div>
+</footer>
 <?php endif; ?>

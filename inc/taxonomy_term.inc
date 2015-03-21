@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements template_preprocess_search_results().
+ * Implements template_preprocess_taxonomy_term().
  */
 function philbo_preprocess_taxonomy_term(&$vars) {
   //

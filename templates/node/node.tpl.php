@@ -84,19 +84,19 @@
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
-  <div id="title" class="node-title clearfix">
-    <h2 id="page-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+  <div class="node-title">
+    <h2 id="node-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
   </div>
   <?php endif; ?>
   <?php if ($page): ?>
-  <div id="title" class="node-title clearfix">
+  <div class="node-title">
     <h1 id="page-title"><?php print $title; ?></h1>
   </div>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
   <?php print $user_picture; ?>
   <?php if ($display_submitted): ?>
-  <div class="submitted">
+  <div class="node-submitted">
     <?php print $submitted; ?>
   </div>
   <?php endif; ?>

@@ -29,9 +29,11 @@ function philbo_preprocess_field(&$vars) {
   //
   // Remove "field-" from $base_class and set field classes
   $base_class = drupal_html_class($base_class);
+/*
   if (strpos($base_class, 'field-') === 0) {
     $base_class = substr($base_class, 6);
   }
+*/
 
   //
   // Field (outer) wrapper.
@@ -76,7 +78,7 @@ function philbo_preprocess_field(&$vars) {
 
   //
   // Individual item wrapper and base class settings.
-  $vars['use_item_wrapper'] = TRUE;
+  $vars['use_item_wrapper'] = FALSE;
   $use_item_wrapper = &$vars['use_item_wrapper'];
   $vars['item_wrapper_element'] = 'div';
   $item_wrapper_element = &$vars['item_wrapper_element'];
@@ -127,11 +129,7 @@ function philbo_preprocess_field(&$vars) {
       $label_hidden = FALSE;
       $label_wrapper_element = 'h2';
       $label = t('Article Images');
-      $use_field_wrapper = FALSE;
       $use_items_wrapper = FALSE;
-      $use_row_wrapper = TRUE;
-      $items_per_row = 2;
-      $row_wrapper_element = 'div';
       $use_item_wrapper = FALSE;
       break;
 

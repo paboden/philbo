@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Messages functions.
+ * Miscellaneous Theme function overrides.
  */
 
 /**
