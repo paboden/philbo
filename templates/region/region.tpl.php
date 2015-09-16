@@ -29,13 +29,23 @@
  */
 ?>
 <?php if ($content): ?>
-  <<?php print $region_wrapper_element; ?> id="<?php print $id;?>" class="<?php print $classes;?>">
-  <?php if ($use_region_inner_wrapper) : ?>
-    <<?php print $region_inner_wrapper_element; ?> class="<?php print $inner_classes;?>">
-      <?php print $content; ?>
-    </<?php print $region_inner_wrapper_element; ?>>
-  <?php else: ?>
-    <?php print $content; ?>
+
+  <?php if ($use_region_wrapper) : ?>
+    <<?php print $region_wrapper_element; ?> <?php if (isset($classes)) : ?>class="<?php print $classes;?>"<?php endif; ?>>
   <?php endif; ?>
-  </<?php print $region_wrapper_element; ?>>
+
+    <?php if (($use_region_inner_wrapper) && ($use_region_wrapper)) : ?>
+      <<?php print $region_inner_wrapper_element; ?> class="<?php print $inner_classes;?>">
+    <?php endif; ?>
+
+      <?php print $content; ?>
+
+    <?php if (($use_region_inner_wrapper) && ($use_region_wrapper)) : ?>
+      </<?php print $region_inner_wrapper_element; ?>>
+    <?php endif; ?>
+
+  <?php if ($use_region_wrapper) : ?>
+    </<?php print $region_wrapper_element; ?>>
+  <?php endif; ?>
+
 <?php endif; ?>

@@ -5,26 +5,18 @@
 
 //
 // Layout rules
-@import 'partials/fonts/*';
-@import 'partials/base/*';
-@import 'partials/system_overrides/*';
-@import 'partials/contrib_overrides/*';
-@import 'partials/misc/*';
-@import 'partials/forms/*';
-@import 'partials/layouts/*';
-
-//
-// Region styling
-@import 'partials/regions/*';
-
-//
-// Content type styling
-@import 'partials/content_types/*';
-
-//
-// View styling
-@import 'partials/views/*';
-
-//
-// Panels styling
-@import 'partials/panels/*';
+@import 'base/*';
+@import 'base/fonts/*';
+@import 'base/base/*';
+@import 'base/system_overrides/*';
+@import 'base/contrib_overrides/*';
+@import 'layouts/*';
+@import 'components/forms/*';
+@import 'components/fields/*';
+@import 'components/node/*';
+@import 'components/pages/*';
+@import 'components/views/*';
+@import 'components/panels/*';
+@import 'components/blocks/*';
+@import 'components/misc/*';
+@import 'components/wysiwyg/*';

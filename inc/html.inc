@@ -21,11 +21,6 @@ function philbo_preprocess_html(&$vars) {
       $region = drupal_html_class($region);
       $vars['classes_array'][] = $region . '-active';
     }
-    else {
-      $region = drupal_html_class($region);
-      $vars['classes_array'][] = $region . '-inactive';
-    }
-
   }
 
   //
@@ -38,11 +33,34 @@ function philbo_preprocess_html(&$vars) {
   $path = rtrim($path, '/');
 
   //
-  // Construct the id name from the path, replacing slashes with dashes.
+  // Construct the class name from the path, replacing slashes with dashes.
   list($body_class,) = explode('/', $path, 2);
   if (!empty($body_class)) {
     $body_class = 'section-'. $body_class;
     $vars['classes_array'][] = $body_class;
+  }
+
+  //
+  // Add classes to the body based on if this node is in a book. If it is then add
+  // either a child, parent, or overview page type of class.
+  if (module_exists('book')) {
+    if ((arg(0) == 'node') && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      if (isset($node->book)) {
+        $plid = $node->book['plid'];
+        $has_children = $node->book['has_children'];
+
+        if ($plid != 0) {
+          $vars['classes_array'][] = 'child-page';
+        }
+        if (($plid != 0) && ($has_children == TRUE)) {
+          $vars['classes_array'][] = 'parent-page';
+        }
+        if (($plid == 0) && ($has_children == TRUE)) {
+          $vars['classes_array'][] = 'book-overview-page';
+        }
+      }
+    }
   }
 
   //

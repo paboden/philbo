@@ -44,18 +44,38 @@
  * @ingroup themeable
  */
 ?>
-<<?php print $wrapper_element; ?> id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<?php if ($use_block_wrapper) : ?>
+<<?php print $block_wrapper_element; ?> id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<?php endif; ?>
 
   <?php print render($title_prefix); ?>
+
   <?php if (($display_title) && (!empty($block->subject))) : ?>
-    <?php if ($use_title_wrapper) : ?><<?php print $title_wrapper_element; ?> <?php print $title_attributes; ?>><?php endif; ?>
+
+    <?php if ($use_title_wrapper) : ?>
+      <<?php print $title_wrapper_element; ?> <?php print $title_attributes; ?>>
+    <?php endif; ?>
+
       <?php print $block->subject ?>
-    <?php if ($use_title_wrapper) : ?></<?php print $title_wrapper_element; ?>><?php endif; ?>
+
+    <?php if ($use_title_wrapper) : ?>
+      </<?php print $title_wrapper_element; ?>>
+    <?php endif; ?>
+
   <?php endif; ?>
+
   <?php print render($title_suffix); ?>
 
-  <?php if ($use_content_wrapper) : ?><<?php print $content_wrapper_element; ?> <?php print $content_attributes; ?>><?php endif; ?>
-    <?php print $content ?>
-  <?php if ($use_content_wrapper) : ?></<?php print $content_wrapper_element; ?>><?php endif; ?>
+  <?php if ($use_content_wrapper) : ?>
+    <<?php print $content_wrapper_element; ?> <?php print $content_attributes; ?>>
+  <?php endif; ?>
 
-</<?php print $wrapper_element; ?>>
+    <?php print $content ?>
+
+  <?php if ($use_content_wrapper) : ?>
+    </<?php print $content_wrapper_element; ?>>
+  <?php endif; ?>
+
+<?php if ($use_block_wrapper) : ?>
+</<?php print $block_wrapper_element; ?>>
+<?php endif; ?>

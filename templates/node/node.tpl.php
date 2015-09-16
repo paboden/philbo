@@ -80,34 +80,41 @@
  * @ingroup themeable
  */
 
+  // We hide the comments and links now so that we can render them later.
+  hide($content['comments']);
+  hide($content['links']);
+
 ?>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<<?php print $node_wrapper; ?> id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+
   <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-  <div class="node-title">
-    <h2 id="node-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-  </div>
+
+  <?php if ((!$page) && (isset($show_title))): ?>
+    <<?php print $title_wrapper; ?> id="node-title">
+
+    <?php if (isset($title_as_link)): ?><a href="<?php print $node_url; ?>"><?php endif; ?>
+      <?php print $title; ?>
+    <?php if (isset($title_as_link)): ?></a><?php endif; ?>
+
+    </<?php print $title_wrapper; ?>>
   <?php endif; ?>
-  <?php if ($page): ?>
-  <div class="node-title">
-    <h1 id="page-title"><?php print $title; ?></h1>
-  </div>
-  <?php endif; ?>
+
   <?php print render($title_suffix); ?>
+
   <?php print $user_picture; ?>
+
   <?php if ($display_submitted): ?>
-  <div class="node-submitted">
-    <?php print $submitted; ?>
-  </div>
+  <div class="node-submitted"><?php print $submitted; ?></div>
   <?php endif; ?>
-  <div class="node-content"<?php print $content_attributes; ?>>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      print render($content);
-    ?>
-  </div>
-  <?php print render($content['links']); ?>
-  <?php print render($content['comments']); ?>
-</div>
+
+  <?php print render($content); ?>
+
+  <?php if (isset($show_links)): ?>
+    <?php print render($content['links']); ?>
+  <?php endif; ?>
+
+  <?php if (isset($show_comments)): ?>
+    <?php print render($content['comments']); ?>
+  <?php endif; ?>
+
+</<?php print $node_wrapper; ?>>

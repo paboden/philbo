@@ -14,16 +14,21 @@ function philbo_preprocess_node(&$vars, $hook) {
   $type = $vars['type'];
   $mode = $vars['view_mode'];
   $node = $vars['node'];
+  $type_mode = $type . '__' . $mode;
   $classes = &$vars['classes_array'];
   $title_classes = &$vars['title_attributes_array']['class'];
   $content_classes = &$vars['content_attributes_array']['class'];
 
   //
   // Template suggestions
+  $vars['theme_hook_suggestions'][] = 'node__' . $mode;
   $vars['theme_hook_suggestions'][] = 'node__' . $type . '__' . $mode;
+
+  //
   // Adding classes
-  $classes[] = drupal_html_class($type);
-  $classes[] = drupal_html_class($type) . '--' . drupal_html_class($mode);
+  if ($mode == 'full') {
+    $classes[] = 'node-full';
+  }
 
   //
   // Node-type-specific preprocess functions
@@ -31,6 +36,46 @@ function philbo_preprocess_node(&$vars, $hook) {
   if (function_exists($function)) {
     $function($vars, $hook);
   }
+
+  //
+  // Set title and wrapper.
+  $vars['show_title'] = TRUE;
+  $show_title = &$vars['show_title'];
+  $vars['title_as_link'] = TRUE;
+  $title_as_link = &$vars['title_as_link'];
+  $vars['title_wrapper'] = 'h2';
+  $title_wrapper = &$vars['title_wrapper'];
+
+  //
+  // Set node wrapper
+  $vars['node_wrapper'] = 'div';
+  $node_wrapper = &$vars['node_wrapper'];
+
+  //
+  // Show links or comments
+  $vars['show_links'] = TRUE;
+  $show_links = &$vars['show_links'];
+  $vars['show_comments'] = TRUE;
+  $show_comments = &$vars['show_comments'];
+
+  switch($type_mode) {
+    case 'page__full' :
+      $show_links = FALSE;
+      break;
+    case 'article__teaser' :
+      $show_title = TRUE;
+      $node_wrapper = 'article';
+      $title_wrapper = 'h2';
+      $title_as_link = TRUE;
+    case 'page__teaser' :
+      $show_links = FALSE;
+      $node_wrapper = 'article';
+      $title_wrapper = 'h2';
+      $title_as_link = FALSE;
+      break;
+  }
+
+
 }
 
 /**
@@ -56,20 +101,10 @@ function philbo_preprocess_node__article(&$vars, $hook) {
   }
 
   if ($mode == 'full') {
-    //
-    // Create a variable that can be printed on any related article template.
-    if (module_exists('views')) {
-      $vars['view_embed_variable'] = views_embed_view('VIEW_NAME', 'DISPLAY_NAME');
-    }
+
   }
 
   if ($mode == 'teaser') {
-    //
-    // Create a custom "read more" link variable for use on any artile template.
-    $vars['read_more'] = l(t('Read more'), 'node/' . $node->nid, array('attributes' => array('class' => array('read-more-link'))));
-  }
-
-  if ($mode == 'search_results') {
 
   }
 }
@@ -91,10 +126,6 @@ function philbo_preprocess_node__page(&$vars, $hook) {
   }
 
   if ($mode == 'teaser') {
-
-  }
-
-  if ($mode == 'search_results') {
 
   }
 }

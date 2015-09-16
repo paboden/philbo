@@ -116,9 +116,11 @@
 </header>
 
 <nav>
-  <?php if ($page['menu']): ?>
-    <?php print render($page['menu']); ?>
-  <?php endif; ?>
+  <div id="menu">
+    <?php if ($page['menu']): ?>
+      <?php print render($page['menu']); ?>
+    <?php endif; ?>
+  </div>
 </nav>
 
 <?php if (isset($breadcrumb)): ?>
@@ -131,17 +133,18 @@
 
 <section>
   <div id="content">
-    <div class="container">
-      <?php if (($title) && (!isset($node))): ?>
-      <div class="title-wrapper">
-        <?php print render($title_prefix); ?>
-        <h1 id="page-title"><?php print $title; ?></h1>
-        <?php print render($title_suffix); ?>
-      </div>
-      <?php endif; ?>
-      <?php print render($page['content']); ?>
-      <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
+
+    <?php if (($title) && (!isset($node))): ?>
+    <div class="title-wrapper">
+    <?php print render($title_prefix); ?>
+      <h1 id="page-title"><?php print $title; ?></h1>
+    <?php print render($title_suffix); ?>
     </div>
+    <?php endif; ?>
+
+    <?php print render($page['content']); ?>
+
+    <?php if ($feed_icons): ?><?php print $feed_icons; ?><?php endif; ?>
 
     <?php if ($page['sidebar_first']): ?>
       <?php print render($page['sidebar_first']); ?>
@@ -150,6 +153,7 @@
     <?php if ($page['sidebar_second']): ?>
       <?php print render($page['sidebar_second']); ?>
     <?php endif; ?>
+
   </div>
 </section>
 

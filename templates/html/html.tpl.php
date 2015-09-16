@@ -55,20 +55,20 @@
  * @see html5_tools_process_html()
  */
 ?>
-<!doctype html<?php if (isset($rdf_header)): print $rdf_header; endif; ?>>
+<!DOCTYPE html<?php if (isset($rdf_header)): print $rdf_header; endif; ?>>
 <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?><?php print $html_attributes; ?>>
-<head<?php if (isset($rdf_profile)): print $rdf_profile; endif; ?>>
-  <?php print $head; ?>
-  <title><?php print $head_title; ?></title>
-  <?php print $styles; ?>
-</head>
-<body class="<?php print $classes; ?>" <?php print $attributes;?>>
-  <div id="skip-link">
-    <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
-  </div>
-  <?php print $page_top; ?>
-  <?php print $page; ?>
-  <?php print $page_bottom; ?>
-  <?php print $scripts; ?>
-</body>
+  <head<?php if (isset($rdf_profile)): print $rdf_profile; endif; ?>>
+    <?php print $head; ?>
+    <title><?php print $head_title; ?></title>
+    <?php print $styles; ?>
+  </head>
+  <body class="<?php print $classes; ?>" <?php print $attributes;?>>
+    <div id="skip-link">
+      <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
+    </div>
+    <?php print $page_top; ?>
+    <?php print $page; ?>
+    <?php print $page_bottom; ?>
+    <?php print $scripts; ?>
+  </body>
 </html>
