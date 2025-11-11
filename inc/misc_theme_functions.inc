@@ -16,6 +16,7 @@
  *   An associative array containing:
  *   - display: (optional) Set to 'status' or 'error' to display only messages
  *     of that type.
+ * @return string
  */
 function philbo_status_messages($variables) {
   $display = $variables['display'];

@@ -6,126 +6,138 @@
  */
 
 /**
- * Implements hook_preprocess_node().
+ * Implements hook_preprocess_node() for "Article".
  */
-function philbo_preprocess_node(&$vars, $hook) {
-  //
-  // Set shortcut variables. Hooray for less typing!
-  $type = $vars['type'];
-  $mode = $vars['view_mode'];
-  $node = $vars['node'];
-  $type_mode = $type . '__' . $mode;
-  $classes = &$vars['classes_array'];
-  $title_classes = &$vars['title_attributes_array']['class'];
-  $content_classes = &$vars['content_attributes_array']['class'];
+function philbo_preprocess_node__teaser(&$vars, $hook) {
 
-  //
-  // Template suggestions
-  $vars['theme_hook_suggestions'][] = 'node__' . $mode;
-  $vars['theme_hook_suggestions'][] = 'node__' . $type . '__' . $mode;
-
-  //
-  // Adding classes
-  if ($mode == 'full') {
-    $classes[] = 'node-full';
-  }
-
-  //
-  // Node-type-specific preprocess functions
-  $function = __FUNCTION__ . '__' . $vars['node']->type;
-  if (function_exists($function)) {
-    $function($vars, $hook);
-  }
-
-  //
-  // Set title and wrapper.
-  $vars['show_title'] = TRUE;
-  $show_title = &$vars['show_title'];
-  $vars['title_as_link'] = TRUE;
-  $title_as_link = &$vars['title_as_link'];
-  $vars['title_wrapper'] = 'h2';
-  $title_wrapper = &$vars['title_wrapper'];
-
-  //
   // Set node wrapper
-  $vars['node_wrapper'] = 'div';
-  $node_wrapper = &$vars['node_wrapper'];
-
-  //
-  // Show links or comments
-  $vars['show_links'] = TRUE;
-  $show_links = &$vars['show_links'];
-  $vars['show_comments'] = TRUE;
-  $show_comments = &$vars['show_comments'];
-
-  switch($type_mode) {
-    case 'page__full' :
-      $show_links = FALSE;
-      break;
-    case 'article__teaser' :
-      $show_title = TRUE;
-      $node_wrapper = 'article';
-      $title_wrapper = 'h2';
-      $title_as_link = TRUE;
-    case 'page__teaser' :
-      $show_links = FALSE;
-      $node_wrapper = 'article';
-      $title_wrapper = 'h2';
-      $title_as_link = FALSE;
-      break;
-  }
-
-
+  $vars['node_wrapper'] = 'article';
 }
 
 /**
  * Implements hook_preprocess_node() for "Article".
  */
 function philbo_preprocess_node__article(&$vars, $hook) {
-  //
-  // Set shortcut variables. Hooray for less typing!
-  $mode = $vars['view_mode'];
-  $node = $vars['node'];
-  $classes = &$vars['classes_array'];
-  $title_classes = &$vars['title_attributes_array']['class'];
-  $content_classes = &$vars['content_attributes_array']['class'];
 
-  //
   // Theme suggestions for each tag term
-  $category = isset($node->field_tags[LANGUAGE_NONE]) ? $node->field_tags[LANGUAGE_NONE] : NULL;
+  $category = isset($vars['node']->field_tags[LANGUAGE_NONE]) ? $vars['node']->field_tags[LANGUAGE_NONE] : NULL;
   if ($category) {
     foreach ($category as $delta => $term) {
-      $name = $term['taxonomy_term']->name;
-      $vars['theme_hook_suggestions'][] = 'node__article__' . $name;
+      $vars['theme_hook_suggestions'][] = 'node__article__' . $term['taxonomy_term']->name;
+      $vars['theme_hook_suggestions'][] = 'node__article__' . $vars['view_mode'] . '__' . $term['taxonomy_term']->name;
     }
   }
+}
 
-  if ($mode == 'full') {
+/**
+ * Implements hook_preprocess_node() for "Article".
+ */
+function philbo_preprocess_node__article__full(&$vars, $hook) {
 
-  }
+  // Force to show links.
+  $vars['show_links'] = TRUE;
+}
 
-  if ($mode == 'teaser') {
+/**
+ * Implements hook_preprocess_node() for "Article".
+ */
+function philbo_preprocess_node__article__teaser(&$vars, $hook) {
 
-  }
+  // Force removal of comments on article teasers.
+  $vars['show_comments'] = FALSE;
 }
 
 /**
  * Implements hook_preprocess_node() for "Basic Page".
  */
 function philbo_preprocess_node__page(&$vars, $hook) {
-  //
-  // Set shortcut variables. Hooray for less typing!
-  $mode = $vars['view_mode'];
-  $node = $vars['node'];
-  $classes = &$vars['classes_array'];
-  $title_classes = &$vars['title_attributes_array']['class'];
-  $content_classes = &$vars['content_attributes_array']['class'];
 
-  if ($mode == 'full') {
+  // Force removal of comments on all page view modes (except overridden).
+  $vars['show_comments'] = FALSE;
 
+  // Force to not show links.
+  $vars['show_links'] = FALSE;
+}
+
+/**
+ * Implements hook_preprocess_node() for "Basic Page".
+ */
+function philbo_preprocess_node__page__full(&$vars, $hook) {
+
+  // Force removal of comments on all page view modes (except overridden).
+  $vars['show_comments'] = FALSE;
+  
+  // Force to not show links.
+  $vars['show_links'] = FALSE;
+}
+
+/**
+ * Implements hook_preprocess_node() for "Basic Page".
+ */
+function philbo_preprocess_node__page__teaser(&$vars, $hook) {
+
+  // Force to not show links.
+  $vars['title_as_link'] = FALSE;
+
+  // Unset the title link.
+  $vars['show_links'] = TRUE;
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function philbo_preprocess_node(&$vars, $hook) {
+
+  // Template suggestions
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'];
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+
+  // Set title and wrapper.
+  $vars['show_title'] = TRUE;
+  $vars['title_as_link'] = TRUE;
+  $vars['title_element'] = 'h2';
+  $vars['title_wrapper'] = 'hgroup';
+
+  // Set node wrapper
+  $vars['node_wrapper'] = 'article';
+
+  // Set author/submitted/published date wrapper.
+  $vars['display_submitted'] = TRUE;
+  $vars['submitted_wrapper'] = 'footer';
+
+  // Show links or comments
+  $vars['show_links'] = TRUE;
+  $vars['show_comments'] = TRUE;
+
+  // Add default classes to wrapper
+  $vars['classes_array'][] = NULL;
+
+  // Set start point for title classes
+  $vars['title_attributes_array']['id'] = '';
+  $vars['title_attributes_array']['class'] = array();
+
+  // Set start point for content wrapper classes
+  $vars['content_attributes_array']['class'] = array();
+
+  // Node-type-specific preprocess functions
+  // TEMPLATE_preprocess_node__NODE_TYPE
+  $function = __FUNCTION__ . '__' . $vars['node']->type;
+  if (function_exists($function)) {
+    $function($vars, $hook);
   }
 
-  if ($mode == 'teaser') {
+  // Node-type-specific preprocess functions
+  // TEMPLATE_preprocess_node__NODE_TYPE
+  $function = __FUNCTION__ . '__' . $vars['view_mode'];
+  if (function_exists($function)) {
+    $function($vars, $hook);
+  }
 
+  // Node-type-specific preprocess functions
+  // TEMPLATE_preprocess_node__NODE_TYPE__VIEW_MODE
+  $function = __FUNCTION__ . '__' . $vars['node']->type . '__' . $vars['view_mode'];
+  if (function_exists($function)) {
+    $function($vars, $hook);
   }
 }

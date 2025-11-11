@@ -84,29 +84,29 @@
 ?>
 
 <?php if ($messages): ?>
-<div id="messages">
-  <div class="container">
-    <?php print $messages; ?>
+  <div id="messages">
+    <div class="container">
+      <?php print $messages; ?>
+    </div>
   </div>
-</div>
 <?php endif; ?>
 
 <?php if ($tabs['#primary']): ?>
-<div id="tabs">
-  <div class="container">
-    <?php print render($tabs);?>
+  <div id="tabs">
+    <div class="container">
+      <?php print render($tabs);?>
+    </div>
   </div>
-</div>
 <?php endif; ?>
 
 <header>
   <div id="header">
     <?php if ($logo): ?>
-    <div class="logo-wrapper">
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-      </a>
-    </div>
+      <div class="logo-wrapper">
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+        </a>
+      </div>
     <?php endif; ?>
 
     <?php if ($page['header']): ?>
@@ -115,31 +115,40 @@
   </div>
 </header>
 
-<nav>
-  <div id="menu">
-    <?php if ($page['menu']): ?>
-      <?php print render($page['menu']); ?>
-    <?php endif; ?>
-  </div>
-</nav>
+<?php if (isset($page['menu'])): ?>
+  <nav>
+    <div id="menu">
+      <?php if ($page['menu']): ?>
+        <?php print render($page['menu']); ?>
+      <?php endif; ?>
+    </div>
+  </nav>
+<?php endif; ?>
+
 
 <?php if (isset($breadcrumb)): ?>
-<div id="breadcrumb">
-  <div class="container">
-    <?php print $breadcrumb; ?>
+  <div id="breadcrumb">
+    <div class="container">
+      <?php print $breadcrumb; ?>
+    </div>
   </div>
-</div>
+<?php endif; ?>
+
+<?php if ($page['content_top']): ?>
+  <section>
+    <?php print render($page['content_top']); ?>
+  </section>
 <?php endif; ?>
 
 <section>
   <div id="content">
 
-    <?php if (($title) && (!isset($node))): ?>
-    <div class="title-wrapper">
-    <?php print render($title_prefix); ?>
-      <h1 id="page-title"><?php print $title; ?></h1>
-    <?php print render($title_suffix); ?>
-    </div>
+    <?php if ($title): ?>
+      <div class="title-wrapper">
+        <?php print render($title_prefix); ?>
+        <h1 id="page-title"><?php print $title; ?></h1>
+        <?php print render($title_suffix); ?>
+      </div>
     <?php endif; ?>
 
     <?php print render($page['content']); ?>
@@ -157,8 +166,15 @@
   </div>
 </section>
 
-<?php if ($page['footer']): ?>
-<footer>
-  <?php print render($page['footer']); ?>
-</footer>
+<?php if ($page['content_bottom']): ?>
+  <section>
+    <?php print render($page['content_bottom']); ?>
+  </section>
 <?php endif; ?>
+
+<?php if ($page['footer']): ?>
+  <footer>
+    <?php print render($page['footer']); ?>
+  </footer>
+<?php endif; ?>
+

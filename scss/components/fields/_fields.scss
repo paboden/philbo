@@ -1,0 +1,20 @@
+.field{
+
+  &.field-image {
+    float: left;
+    margin: 5px 2em 1em 0;
+  }
+
+  &.field-tags {
+    width: 100%;
+    display: block;
+    float: none;
+    margin: 0 0 1em 0;
+
+    &::after {
+      display: table;
+      content: '';
+      clear: both;
+    }
+  }
+}

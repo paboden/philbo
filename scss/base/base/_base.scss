@@ -2,19 +2,19 @@
 /* ---------- Basic override system settings ---------- */
 
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  line-height: 1.4em;
-  font-size: 87.5%;
+  line-height: $lh-normal;
+  font-size: $font-normal;
   word-wrap: break-word;
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: $serif;
 }
 
 .element-hidden,
@@ -38,22 +38,24 @@ a:visited,
 a:hover,
 a:active,
 a:focus {
-  text-decoration: underline;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0 0 1em;
+  text-decoration: none;
+  color: blue;
 }
 
 h1,
 h2 {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: $sans-serif;
+  margin: 1.5em 0 0.5em;
+  line-height: $lh-normal;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  line-height: $lh-normal;
+  font-family: $sans-serif;
+  margin: 1em 0 0.5em;
 }
 
 p {

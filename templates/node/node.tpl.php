@@ -90,12 +90,12 @@
   <?php print render($title_prefix); ?>
 
   <?php if ((!$page) && (isset($show_title))): ?>
-    <<?php print $title_wrapper; ?> id="node-title">
-
-    <?php if (isset($title_as_link)): ?><a href="<?php print $node_url; ?>"><?php endif; ?>
-      <?php print $title; ?>
-    <?php if (isset($title_as_link)): ?></a><?php endif; ?>
-
+    <<?php print $title_wrapper; ?>>
+      <<?php print $title_element; ?>>
+      <?php if (isset($title_as_link)): ?><a href="<?php print $node_url; ?>"><?php endif; ?>
+        <?php print $title; ?>
+      <?php if (isset($title_as_link)): ?></a><?php endif; ?>
+      </<?php print $title_element; ?>>
     </<?php print $title_wrapper; ?>>
   <?php endif; ?>
 
@@ -104,7 +104,7 @@
   <?php print $user_picture; ?>
 
   <?php if ($display_submitted): ?>
-  <div class="node-submitted"><?php print $submitted; ?></div>
+  <<?php print $submitted_wrapper; ?> class="node-submitted"><?php print $submitted; ?></<?php print $submitted_wrapper; ?>>
   <?php endif; ?>
 
   <?php print render($content); ?>

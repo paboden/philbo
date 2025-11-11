@@ -50,19 +50,25 @@
     <<?php print $label_wrapper_element ?> <?php print $title_attributes; ?>><span><?php print $label ?></span></<?php print $label_wrapper_element ?>>
   <?php endif; ?>
   <?php if ($use_items_wrapper): ?><<?php print $items_wrapper_element; ?> <?php print $content_attributes; ?>><?php endif; ?>
+
     <?php foreach ($items as $delta => $item): ?>
+
       <?php if (($use_row_wrapper) && ($delta == 0)): ?>
         <<?php print $row_wrapper_element; ?> class="<?php print $row_classes; ?>">
       <?php endif; ?>
+
         <?php if ($use_item_wrapper): ?><<?php print $item_wrapper_element; ?> <?php print $item_attributes[$delta]; ?>><?php endif; ?>
           <?php print render_field($item, $field_name, $bundle, $view_mode); ?>
         <?php if ($use_item_wrapper): ?></<?php print $item_wrapper_element; ?>><?php endif; ?>
+
       <?php if (($use_row_wrapper) && ((($delta + 1) % $items_per_row) == 0) && (($delta + 1) != $item_count)): ?>
         </<?php print $row_wrapper_element; ?>><<?php print $row_wrapper_element; ?> class="<?php print $row_classes; ?>">
       <?php endif; ?>
       <?php if (($use_row_wrapper) && (($delta + 1) == $item_count)): ?>
         </<?php print $row_wrapper_element; ?>>
       <?php endif; ?>
+
     <?php endforeach; ?>
+
   <?php if ($use_items_wrapper): ?></<?php print $items_wrapper_element; ?>><?php endif; ?>
 <?php if ($use_field_wrapper): ?></<?php print $field_wrapper_element; ?>><?php endif; ?>

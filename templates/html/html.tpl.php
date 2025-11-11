@@ -55,7 +55,7 @@
  * @see html5_tools_process_html()
  */
 ?>
-<!DOCTYPE html<?php if (isset($rdf_header)): print $rdf_header; endif; ?>>
+<!DOCTYPE html>
 <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?><?php print $html_attributes; ?>>
   <head<?php if (isset($rdf_profile)): print $rdf_profile; endif; ?>>
     <?php print $head; ?>

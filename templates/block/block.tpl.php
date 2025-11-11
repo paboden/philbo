@@ -45,18 +45,18 @@
  */
 ?>
 <?php if ($use_block_wrapper) : ?>
-<<?php print $block_wrapper_element; ?> id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<<?php print $block_wrapper_element; ?> <?php if ($block_html_id) : ?>id="<?php print $block_html_id; ?>"<?php endif; ?> class="<?php print $classes; ?>"<?php print $attributes; ?>>
 <?php endif; ?>
 
   <?php print render($title_prefix); ?>
 
-  <?php if (($display_title) && (!empty($block->subject))) : ?>
+  <?php if (($display_title) && (!empty($title))) : ?>
 
     <?php if ($use_title_wrapper) : ?>
       <<?php print $title_wrapper_element; ?> <?php print $title_attributes; ?>>
     <?php endif; ?>
 
-      <?php print $block->subject ?>
+      <?php print $title ?>
 
     <?php if ($use_title_wrapper) : ?>
       </<?php print $title_wrapper_element; ?>>
