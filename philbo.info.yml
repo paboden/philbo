@@ -1,0 +1,57 @@
+name: Philbo
+type: theme
+description: 'A flexible custom theme with many regions.'
+alt text: "Screenshot of Philbo theme."
+package: Philbo
+base theme: false
+version: VERSION
+core_version_requirement: ^9.4 || ^10.2 || ^11.2
+
+regions:
+  page_top: 'Page (top)'
+  header: 'Header'
+  menu: 'Menu (primary)'
+  menu_secondary: 'Menu (secondary)'
+  content_above: 'Content (above)'
+  content: 'Content'
+  content_below: 'Content (below)'
+  sidebar_first: 'Sidebar (first)'
+  sidebar_second: 'Sidebar (second)'
+  footer_upper: 'Footer (upper)'
+  footer_one: 'Footer (one)'
+  footer_two: 'Footer (two)'
+  footer_three: 'Footer (three)'
+  footer_four: 'Footer (four)'
+  footer_below: 'Footer (below)'
+  page_bottom: 'Page bottom'
+
+regions_hidden: false
+
+libraries: false
+
+libraries-override: false
+
+libraries-extend: false
+
+ckeditor5-stylesheets: false
+
+; Settings
+settings[shortcut_module_link]          = 0
+settings[philbo_breadcrumb]             = yes
+settings[philbo_breadcrumb_separator]   = ' › '
+settings[philbo_breadcrumb_home]        = 1
+settings[philbo_breadcrumb_trailing]    = 0
+settings[philbo_breadcrumb_title]       = 0
+settings[philbo_skip_link_anchor]       = main-menu
+settings[philbo_skip_link_text]         = Jump to navigation
+
+; Features
+features[]                              = logo
+features[]                              = name
+features[]                              = favicon
+features[]                              = main_menu
+features[]                              = secondary_menu
+features[]                              = slogan
+features[]                              = node_user_picture
+features[]                              = comment_user_picture
+features[]                              = comment_user_verification
